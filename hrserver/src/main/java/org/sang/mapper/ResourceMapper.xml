@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sang.mapper.ResourceMapper">
+
+    <select id="selectByName" resultType="org.sang.bean.Menu">
+        SELECT * FROM menu where name= #{name};
+    </select>
+    
+    <select id="selectRidByHrId" resultType="Integer">
+    	select rid from hr_role where hrid = #{hrid}
+    </select>
+    
+    <!-- <select id="selectAllMenuByHrID" resultType="org.sang.bean.Menu">
+        select * from menu where id in (select mr.mid from hr_role h_r,menu_role mr where h_r.rid=mr.rid and h_r.hrid = #{hrid})
+		UNION ALL
+		select * from menu where id in (select parentId from menu where id in (select mr.mid from hr_role h_r,menu_role mr where h_r.rid=mr.rid and h_r.hrid = #{hrid}))
+		order by id
+    </select> -->
+    
+    <select id="select">
+    	select mr.mid from hr_role h_r,menu_role mr where h_r.rid=mr.rid and h_r.hrid = #{hrid}
+    </select>
+    
+    <select id="selectAll" resultType="org.sang.bean.MenuManage">
+        SELECT * FROM menu;
+    </select>
+    
+    <insert id="addMenus" parameterType="org.sang.bean.MenuManage">
+    	insert into menu set 
+    			id=#{menuManage.id}, name=#{menuManage.name}, 
+    			url=#{menuManage.url}, path=#{menuManage.path},
+    			component=#{menuManage.component}, iconCls=#{menuManage.iconCls},
+   		 		keepAlive=#{menuManage.keepAlive}, requireAuth=#{menuManage.requireAuth},
+   		 		parentId=#{menuManage.parentId}, enabled=#{menuManage.enabled}
+    </insert>
+
+    <insert id="addMenuRole">
+    	insert into menu_role set mid = #{mid}, rid = #{rid}
+    </insert>
+
+	<delete id="deleteMenuRoleByMid">
+		DELETE FROM menu_role WHERE mid = #{mid}
+	</delete>
+
+    <delete id="deleteMenuById">
+        DELETE FROM menu WHERE id = #{id}
+    </delete>
+
+</mapper>

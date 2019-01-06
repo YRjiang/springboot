@@ -1,0 +1,96 @@
+1.
+
+2.	springboot 整合 quartz
+	1.bean:			jobEntity
+	2.config:		ConfigureQuartz
+	3.controller:	JobController
+	4.job:			DynamicJob
+	5.mapper:		JobEntityRepository
+	6.service:		DynamicJobService
+	7.resources:	quartz.properties
+	8.application:	配置
+	9.数据库			Quartz 官方数据库
+	
+	核心部分:	src/main/resources 文件夹 quartz 相关配置，
+			ConfigureQuartz   Quartz 核心配置;
+			DynamicJob		  Quartz 核心方法;
+			Quartz 官方数据库
+			
+			
+3.	rabbit
+    1.config:		RabbitConfig          简单模式的核心配置
+    2.config:		FanoutRabbitConfig    订阅者模式的核心配置
+    3.tcp.direct:   Sender/Receiver       发送、接收 - 简单模式
+    4.tcp.fanout:   订阅者模式下的发送、接收
+    5.job:			DynamicJob - helloSender.send("");  发送调用处;
+	6.rabbit消息序列化:		一：MessageConvert:	转化消息处理方法参数;
+						二：消息的 content_type 属性表示消息 body 数据以什么数据格式存储:有四种
+							1.application/octet-stream
+							2.application/x-java-serialized-object:	java 对象序列化格式存储
+							3.text/plain：文本数据类型存储，使用 String
+							4.application/json:	JSON 格式
+						三：Message 内容对象序列化与反序列化;
+			
+4.	tcp 任务分发机制实现:
+	1.MessageBootstrap：				在  Servlet 运行时，就把某包下的类都加载到  Map 中; (action, Class)
+	2.TCPInboundHandlerAdapter: 	从 rabbitmq 队列中获取数据，逐个分发
+	3.TCPInboundHandlerAdapter - decodeAndDispatch
+			RecvMessageService service = ApplicationContextHelper
+		.getBean(MessageCollector.createRecvMessageElement(action).getRecvMessageService());		
+		此方法:根据 action 返回 实体类对象， 再 getAnnotation 获取其注解，再  actionType.bind() 获取服务类对象;
+		ApplicationContextHelper.getBean 返回 服务类 bean , 最后 即可调用 recvMessageService.handler();
+	
+5.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			

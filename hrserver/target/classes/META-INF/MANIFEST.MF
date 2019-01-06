@@ -4,6 +4,7 @@ Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: yr
 Implementation-Vendor-Id: org.sang
 Build-Jdk: 1.8.0_181
-Implementation-URL: http://maven.apache.org
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/hrserver
 Created-By: Maven Integration for Eclipse
 
