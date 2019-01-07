@@ -16,6 +16,11 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSON;
 
+/*
+ * 相应的 废弃了 此 quartz 方案;
+ * 
+ */
+
 @Component
 public class SmsQuartzJob {
     private Logger logger = LoggerFactory.getLogger(SmsQuartzJob.class);
@@ -57,7 +62,7 @@ public class SmsQuartzJob {
         control.setRun(true);
 
         String str = JSON.toJSONString(control);//把 java对象转成 json字符串,方便 rabbitmq接收处 解析
-        tcpInboundHandlerSender.send(str);
+        tcpInboundHandlerSender.send(str);//给 rabbitmq 发送消息
 
         /*if (name == "email") {
             logger.info("message job name : {} ", map.getString("name"));

@@ -15,6 +15,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+/*
+ * 废弃此 quartz 定时任务方法;
+ * 
+ */
+
 @Component
 public class FirstQuartzJob {
     private Logger logger = LoggerFactory.getLogger(FirstQuartzJob.class);

@@ -77,15 +77,21 @@
 		此方法:根据 action 返回 实体类对象， 再 getAnnotation 获取其注解，再  actionType.bind() 获取服务类对象;
 		ApplicationContextHelper.getBean 返回 服务类 bean , 最后 即可调用 recvMessageService.handler();
 	
-5.
+5.	spring boot quartz	(与 2 不同,  此方案(5) 使用  "spring-boot-starter-quartz" jar包)
+	1.bean:			QuartzEntity
+	2.common:		dynamicquery.DynamicQuery
+								.DynamicQueryImpl
+								.NativeQueryResultEntity
+	3.service:		JobServiceImpl
+	4.controll:		QuartzJobController
+	5.config:		TaskRunner
+	6.job:			SecondQuartzJob
+	
+	# spring boot 2.x 已集成Quartz，无需自己配置
+	# 在容器启动完成的时候 执行 TaskRunner 类，会自动创建一个测试任务; 
+		其中 quartz.setJobClassName("org.sang.job.SecondQuartzJob"); 指定执行的任务类
 
-
-
-
-
-
-
-
+6.	
 
 
 

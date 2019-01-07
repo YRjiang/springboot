@@ -115,7 +115,7 @@
 		</dependency>
 		
 		<!-- quartz -->
-		<dependency>
+		<!-- <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
             <version>2.3.0</version>
@@ -124,7 +124,13 @@
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz-jobs</artifactId>
             <version>2.3.0</version>
-        </dependency>
+        </dependency> -->
+        
+        <!--quartz依赖-->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-quartz</artifactId>
+		</dependency>
 
 	    <!-- rabbitmq -->
 	    <dependency>
