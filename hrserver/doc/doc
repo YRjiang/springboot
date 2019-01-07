@@ -1,3 +1,40 @@
+### 项目结构
+```java
+├── demoeee
+│   ├── com   //启动整个项目的moudle   
+│         └── example
+│              └── demo
+│                    ├──aop //个人定义的写的自定义注解
+│                    ├──api //swagger API 访问地址：http://localhost:8080/quartz/swagger-ui.html
+│                    ├──command //命令开发模式
+│                    ├──commonfactory//普通工厂开发模式
+│                    ├──decorate //装饰者开发模式
+│                    ├──observer //观察者开发模式
+│                    ├──lambda //java8的一个新特性
+│                    ├──config //定时任务的配置
+│                    ├──controller //任务控制层
+│                    ├──dao //对应mybatis xml的配置文件
+│                    ├──entity //实体类
+│                    ├──interceptor //实体类
+│                    ├──service //业务逻辑层
+│                    ├──util //帮助类
+│                    ├──需要执行的job //实体类
+│                    └──DemoApplication.java //整个项目的启动类  
+│            └── resources
+│            │     ├── application-dev.properties  //开发环境
+│            │     ├── application-prod.properties //生产环境
+│            │     ├── application-test.properties //测试环境
+│            │     ├── application.properties  //配置总文件
+│            │     ├── quartz.properties  //定时任务配置文件
+│            │     ├── mapper //mybatis的配置文件
+│            │     ├── docker-compose.yml //docker配置文件
+│            │     ├── sql //建库文件
+│            │     ├── static //图片，js,css等页面需要的元素
+│            │     └── templates//页面代码
+│   └── pom启动整个项目的依赖 //
+
+```
+
 1.
 
 2.	springboot 整合 quartz
