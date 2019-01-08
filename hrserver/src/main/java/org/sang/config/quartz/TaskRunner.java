@@ -1,5 +1,7 @@
 package org.sang.config.quartz;
 
+import java.util.List;
+
 import org.quartz.CronScheduleBuilder;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
@@ -86,15 +88,18 @@ public class TaskRunner implements ApplicationRunner{
 //            //交由Scheduler安排触发
 //            scheduler.scheduleJob(job, trigger);
 //    	} 
-//    	{
-//    	    QuartzEntity quartz = new QuartzEntity();
-//            quartz.setJobName("test03");
-//            quartz.setJobGroup("test");
-//            quartz.setDescription("测试任务333");
-//            quartz.setJobClassName("org.sang.job.ThirdQuartzJob");
-//            quartz.setCronExpression("0/10 * * * * ?");
-//    	    save(quartz);
-//    	}
+/*    	{
+    	    QuartzEntity quartz = new QuartzEntity();
+            quartz.setJobName("test03");
+            quartz.setJobGroup("test");
+            quartz.setDescription("测试任务333");
+            quartz.setJobClassName("org.sang.job.ChickenJob");
+            quartz.setCronExpression("0/10 * * * * ?");
+    	    save(quartz);
+    	}*/
+/*    	{
+    	    list(null, 1, 10);
+    	}*/
     	
     }
     
@@ -125,4 +130,10 @@ public class TaskRunner implements ApplicationRunner{
         return Result.ok();
     }
 
+    public Result list(QuartzEntity quartz, Integer pageNo, Integer pageSize){
+        LOGGER.info("任务列表");
+        List<QuartzEntity> list = jobService.listQuartzEntity(null, pageNo, pageSize);
+        return Result.ok(list);
+    }
+    
 }

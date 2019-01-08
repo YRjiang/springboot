@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -65,10 +66,12 @@ public class QuartzJobController {
     }
     
     @PostMapping("/list")
-    public Result list(QuartzEntity quartz,Integer pageNo,Integer pageSize){
+    public Object list(QuartzEntity quartz, @RequestParam(defaultValue = "1") Integer pageNo,
+            @RequestParam(defaultValue = "10") Integer pageSize){
         LOGGER.info("任务列表");
+        //QuartzEntity quartzEntity = new QuartzEntity();
         List<QuartzEntity> list = jobService.listQuartzEntity(quartz, pageNo, pageSize);
-        return Result.ok(list);
+        return list;
     }
     
     @PostMapping("/trigger")
